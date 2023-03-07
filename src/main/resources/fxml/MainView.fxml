@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="600" prefWidth="1000" styleClass="shadow-pane" stylesheets="@../css/application.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.edencoding.controllers.MainViewController">
+    <center>
+        <VBox id="dragTarget" spacing="10" styleClass="background-pane"> <!-- Vertical box to group the horizontal boxes -->
+            <!-- Box at the bottom -->
+            <ScrollPane styleClass="transparent-background" fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
+                <StackPane id="contentContainer">
+                    <HBox alignment="CENTER">
+                        <VBox id="leftbox" styleClass="left-container-background" minWidth="150">
+                            <HBox>
+                                <padding>
+                                    <Insets top="5" left="5"/>
+                                </padding>
+                                <HBox> <!-- HBox for the label -->
+                                    <Label text="PITI APP" styleClass="main-text"/>
+                                </HBox>
+                            </HBox>
+                        </VBox>
+
+                        <VBox id="rightbox" styleClass="right-container-background" minWidth="845" alignment="TOP_CENTER">
+                            <!-- HBox for the buttons -->
+                            <padding>
+                                <Insets top="5" right="5"/>
+                            </padding>
+                            <HBox id="right-icons" alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Button onAction="#handleGitButtonClicked" styleClass="git-button"/>
+                                <Button onAction="#handleExitButtonClicked" styleClass="exit-button"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                </StackPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+</BorderPane>
