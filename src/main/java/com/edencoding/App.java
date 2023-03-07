@@ -32,7 +32,6 @@ public class App extends Application {
         });
 
         Scene scene = new Scene(root);
-        //scene.getRoot().setEffect(new DropShadow(10, Color.rgb(100, 100, 100)));
         scene.setFill(Color.TRANSPARENT);
 
         primaryStage.setScene(scene);

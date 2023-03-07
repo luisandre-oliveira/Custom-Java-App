@@ -15,19 +15,21 @@
                     <HBox alignment="CENTER">
                         <VBox id="leftbox" styleClass="left-container-background" minWidth="150">
                             <HBox>
-                                <padding>
-                                    <Insets top="5" left="5"/>
-                                </padding>
-                                <HBox> <!-- HBox for the label -->
-                                    <Label text="PITI APP" styleClass="main-text"/>
-                                </HBox>
+                                <VBox>
+                                    <padding>
+                                        <Insets top="10" left="10"/>
+                                    </padding>
+                                    <HBox> <!-- HBox for the label -->
+                                        <Label text="PITI APP" styleClass="main-text"/>
+                                    </HBox>
+                                </VBox>
                             </HBox>
                         </VBox>
 
                         <VBox id="rightbox" styleClass="right-container-background" minWidth="845" alignment="TOP_CENTER">
                             <!-- HBox for the buttons -->
                             <padding>
-                                <Insets top="5" right="5"/>
+                                <Insets top="10" right="10"/>
                             </padding>
                             <HBox id="right-icons" alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
                                 <Button onAction="#handleGitButtonClicked" styleClass="git-button"/>
