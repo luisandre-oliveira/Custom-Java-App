@@ -52,22 +52,19 @@
                                 <padding>
                                     <Insets top="10" bottom="10"/>
                                 </padding>
-                                <TextArea fx:id="text" minHeight="250" HBox.hgrow="ALWAYS" promptText="Frase a multiplicar: "/>
+                                <TextArea fx:id="textArea" minHeight="250" HBox.hgrow="ALWAYS" promptText="Frase a multiplicar: "/>
                             </HBox>
 
-                            <!-- TODO: don't forget to take the styleClass from this HBox before production -->
-                            <HBox HBox.hgrow="ALWAYS" styleClass="practice1-background">
+                            <VBox>
+                                <HBox spacing="10">
+                                    <Label text="Only use integers:"/>
+                                    <CheckBox fx:id="integerCheck" onAction="#handleOnlyIntCheckAction"/>
+                                </HBox>
 
-                                <VBox alignment="CENTER_LEFT">
-                                    <CheckBox fx:id="integerCheck"/>
-                                </VBox>
-
-                                <!-- TODO: don't forget to take the styleClass from this VBox before production -->
-                                <VBox styleClass="practice1-background" alignment="CENTER_RIGHT">
-                                    <Button fx:id="submitButton" onAction="#handleSubmitButtonAction"/>
-                                </VBox>
-
-                            </HBox>
+                                <HBox alignment="TOP_RIGHT">
+                                    <Button fx:id="submitButton" onAction="#handleSubmitButtonAction" styleClass="send-button"/>
+                                </HBox>
+                            </VBox>
                         </VBox>
                     </HBox>
                 </StackPane>
