@@ -5,6 +5,9 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -15,6 +18,23 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
+    }
+
+    @FXML
+    private TextArea text;
+
+    @FXML
+    private Button submitButton;
+
+    @FXML
+    private CheckBox integerCheck;
+
+    @FXML
+    private void handleSubmitButtonAction(ActionEvent event) {
+        if(!text.getText().isEmpty()) {
+            System.out.println(text.getText());
+        }
+        event.consume();
     }
 
     @FXML

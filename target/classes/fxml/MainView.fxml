@@ -25,33 +25,48 @@
                                     </padding>
                                     <Label text="PITI APP" styleClass="main-text"/>
                                 </VBox>
-                                <!-- second vertical here for the button -->
-                                <VBox>
-                                    <padding>
-                                        <Insets top="15" left="55"/>
-                                    </padding>
-                                    <Button styleClass="retract-button"/>
-                                </VBox>
                             </HBox>
                             <!-- second horizontal box for the line -->
                             <HBox>
                                 <padding>
                                     <Insets top="10"/>
                                 </padding>
-                                <Line layoutX="50.0" layoutY="50.0" endX="150" stroke="#333333" strokeWidth="2.5"/>
+                                <Line layoutX="50" layoutY="50" endX="150" stroke="#333333" strokeWidth="2.5"/>
                             </HBox>
                             <!-- (NEXT) third horizontal box for the next buttons -->
                         </VBox>
 
                         <!-- Right side box -->
                         <VBox id="rightbox" styleClass="right-container-background" minWidth="835" alignment="TOP_CENTER">
-                            <!-- HBox for the buttons -->
                             <padding>
-                                <Insets top="10" right="10"/>
+                                <Insets top="10" bottom="10" left="10" right="10"/>
                             </padding>
-                            <HBox id="right-icons" alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
+
+                            <!-- HBox for the buttons -->
+                            <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
                                 <Button onAction="#handleGitButtonClicked" styleClass="git-button"/>
                                 <Button onAction="#handleExitButtonClicked" styleClass="exit-button"/>
+                            </HBox>
+
+                            <HBox HBox.hgrow="ALWAYS">
+                                <padding>
+                                    <Insets top="10" bottom="10"/>
+                                </padding>
+                                <TextArea fx:id="text" minHeight="250" HBox.hgrow="ALWAYS" promptText="Frase a multiplicar: "/>
+                            </HBox>
+
+                            <!-- TODO: don't forget to take the styleClass from this HBox before production -->
+                            <HBox HBox.hgrow="ALWAYS" styleClass="practice1-background">
+
+                                <VBox alignment="CENTER_LEFT">
+                                    <CheckBox fx:id="integerCheck"/>
+                                </VBox>
+
+                                <!-- TODO: don't forget to take the styleClass from this VBox before production -->
+                                <VBox styleClass="practice1-background" alignment="CENTER_RIGHT">
+                                    <Button fx:id="submitButton" onAction="#handleSubmitButtonAction"/>
+                                </VBox>
+
                             </HBox>
                         </VBox>
                     </HBox>

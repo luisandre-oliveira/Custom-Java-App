@@ -77,7 +77,7 @@
 }
 
 .practice2-background{
-    -fx-background-color: -secondary;
+    -fx-background-color: linear-gradient(from 25px 25px to 500px 300px, #8360C3, #2EBF91);
 }
 
 .drag-allowed{
