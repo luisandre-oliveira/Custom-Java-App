@@ -52,7 +52,7 @@
                                 <padding>
                                     <Insets top="10" bottom="10"/>
                                 </padding>
-                                <TextArea fx:id="textArea" minHeight="250" HBox.hgrow="ALWAYS" promptText="Frase a multiplicar: "/>
+                                <TextArea fx:id="textArea" minHeight="250" HBox.hgrow="ALWAYS" promptText="Sentence to send: "/>
                             </HBox>
 
                             <VBox>
@@ -62,9 +62,31 @@
                                 </HBox>
 
                                 <HBox alignment="TOP_RIGHT">
-                                    <Button fx:id="submitButton" onAction="#handleSubmitButtonAction" styleClass="send-button"/>
+                                    <Button onAction="#handleSubmitButtonAction" styleClass="send-button"/>
                                 </HBox>
                             </VBox>
+
+                            <HBox>
+                                <padding>
+                                    <Insets top="10" right="10"/>
+                                </padding>
+                                <VBox minWidth="400" alignment="BASELINE_LEFT">
+
+                                </VBox>
+
+                                <VBox minWidth="400" alignment="BASELINE_RIGHT">
+                                    <ScrollPane>
+                                        <TableView fx:id="historyTable">
+
+                                            <columns>
+                                                <TableColumn text="N" minWidth="25"/>
+                                                <TableColumn text="Messages" minWidth="300"/>
+                                            </columns>
+
+                                        </TableView>
+                                    </ScrollPane>
+                                </VBox>
+                            </HBox>
                         </VBox>
                     </HBox>
                 </StackPane>
