@@ -3,30 +3,48 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Line?>
 
 <BorderPane prefHeight="600" prefWidth="1000" styleClass="shadow-pane" stylesheets="@../css/application.css"
             xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.edencoding.controllers.MainViewController">
     <center>
-        <VBox id="dragTarget" spacing="10" styleClass="background-pane"> <!-- Vertical box to group the horizontal boxes -->
-            <!-- Box at the bottom -->
+        <!-- Vertical box to group the horizontal boxes -->
+        <VBox id="dragTarget" spacing="10" styleClass="background-pane">
             <ScrollPane styleClass="transparent-background" fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
                 <StackPane id="contentContainer">
                     <HBox alignment="CENTER">
+                        <!-- Left side box -->
                         <VBox id="leftbox" styleClass="left-container-background" minWidth="150">
+                            <!-- first horizontal box for the title and the retract button -->
                             <HBox>
+                                <!-- first vertical here for the title -->
                                 <VBox>
                                     <padding>
                                         <Insets top="10" left="10"/>
                                     </padding>
-                                    <HBox> <!-- HBox for the label -->
-                                        <Label text="PITI APP" styleClass="main-text"/>
-                                    </HBox>
+                                    <Label text="PITI APP" styleClass="main-text"/>
+                                </VBox>
+                                <!-- second vertical here for the button -->
+                                <VBox>
+                                    <padding>
+                                        <Insets top="15" left="55"/>
+                                    </padding>
+                                    <Button styleClass="retract-button"/>
                                 </VBox>
                             </HBox>
+                            <!-- second horizontal box for the line -->
+                            <HBox>
+                                <padding>
+                                    <Insets top="10"/>
+                                </padding>
+                                <Line layoutX="50.0" layoutY="50.0" endX="150" stroke="#333333" strokeWidth="2.5"/>
+                            </HBox>
+                            <!-- (NEXT) third horizontal box for the next buttons -->
                         </VBox>
 
-                        <VBox id="rightbox" styleClass="right-container-background" minWidth="845" alignment="TOP_CENTER">
+                        <!-- Right side box -->
+                        <VBox id="rightbox" styleClass="right-container-background" minWidth="835" alignment="TOP_CENTER">
                             <!-- HBox for the buttons -->
                             <padding>
                                 <Insets top="10" right="10"/>

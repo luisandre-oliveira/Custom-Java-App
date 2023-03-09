@@ -1,18 +1,21 @@
 .root{
-    -primary: #81c48355; /* pale green */
-    -secondary: #375fcb; /* blue */
-    -tertiary: #fcc200; /* yellow */
-    -tertiary-armed: #fddd71; /* pale yellow */
+    -primary: #81C48355; /* pale green */
+    -secondary: #375FCB; /* blue */
+    -tertiary: #FCC200; /* yellow */
+    -tertiary-armed: #FDDD71; /* pale yellow */
 
-    -white: #ffffff;
-    -red: #ff0000;
+    -white: #FFFFFF;
+    -red: #FF0000;
+    -grey: #333333; /* real cool grey for the line */
     -black: #000000;
 
-    -text-grey: #686868ff;
-    -almost-transparent: #ffffff22;
+    -text-grey: #686868FF;
+    -almost-transparent: #FFFFFF22;
 }
 
 .background-pane{
+    -fx-padding: 5px;
+    padding: 5px;
     -fx-background-color: -white;
     background-color: -white;
    -fx-background-radius: 10px;
@@ -70,7 +73,7 @@
 }
 
 .practice1-background{
-    -fx-background-color: linear-gradient(from 25px 25px to 500px 300px, #a1ffce, #faffd1);
+    -fx-background-color: linear-gradient(from 25px 25px to 500px 300px, #A1FFCE, #FAFFD1);
 }
 
 .practice2-background{
@@ -130,6 +133,25 @@
 
 .search-button{
     -fx-shape: "M495.04,404.48L410.56,320c15.36-30.72,25.6-66.56,25.6-102.4C436.16,97.28,338.88,0,218.56,0S0.96,97.28,0.96,217.6 s97.28,217.6,217.6,217.6c35.84,0,71.68-10.24,102.4-25.6l84.48,84.48c25.6,25.6,64,25.6,89.6,0 C518.08,468.48,518.08,430.08,495.04,404.48z M218.56,384c-92.16,0-166.4-74.24-166.4-166.4S126.4,51.2,218.56,51.2 s166.4,74.24,166.4,166.4S310.72,384,218.56,384z";
+}
+
+.retract-button{
+    -height: 15;
+    -width: 15;
+    -fill: -white;
+
+   -fx-background-color: -fill;
+   background-color: -fill;
+    -fx-min-height: -height;
+    min-height: -height;
+    -fx-min-width: -width;
+    min-width: -width;
+    -fx-max-height: -height;
+    max-height: -height;
+    -fx-max-width: -width;
+    max-width: -width;
+
+    -fx-shape: "M0 50 L50 0 L50 100 Z";
 }
 
 .git-button {
