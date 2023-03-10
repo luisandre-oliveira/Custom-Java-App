@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Line?>
+<BorderPane prefHeight="600" prefWidth="1000" styleClass="shadow-pane" stylesheets="@../css/application.css"
+            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.piti.controllers.EmitterViewController">
+    <center>
+        <VBox id="dragTarget" spacing="10" styleClass="background-pane">
+            <ScrollPane styleClass="transparent-background" fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
+                <StackPane id="contentContainer">
+                    <HBox alignment="CENTER">
+                        <!-- Left side box -->
+                        <VBox id="leftbox" styleClass="left-container-background" minWidth="150">
+                            <!-- first horizontal box for the title and the retract button -->
+                            <HBox>
+                                <!-- first vertical here for the title -->
+                                <VBox>
+                                    <padding>
+                                        <Insets top="10" left="10"/>
+                                    </padding>
+                                    <Label text="PITI APP" styleClass="main-text"/>
+                                </VBox>
+                            </HBox>
+                            <!-- second horizontal box for the line -->
+                            <HBox>
+                                <padding>
+                                    <Insets top="10"/>
+                                </padding>
+                                <Line layoutX="50" layoutY="50" endX="150" stroke="#333333" strokeWidth="2.5"/>
+                            </HBox>
+                            <!-- (NEXT) third horizontal box for the next buttons -->
+                        </VBox>
+
+                        <!-- Right side box -->
+                        <VBox id="rightbox" styleClass="right-container-background" minWidth="835" alignment="TOP_CENTER">
+                            <padding>
+                                <Insets top="10" bottom="10" left="10" right="10"/>
+                            </padding>
+
+                            <!-- HBox for the buttons -->
+                            <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
+                                <Button onAction="#handleGitButtonClicked" styleClass="git-button"/>
+                                <Button onAction="#handleExitButtonClicked" styleClass="exit-button"/>
+                            </HBox>
+
+                            <HBox HBox.hgrow="ALWAYS">
+                                <padding>
+                                    <Insets top="10" bottom="10"/>
+                                </padding>
+                                <TextArea fx:id="textArea" minHeight="250" HBox.hgrow="ALWAYS" promptText="Sentence to send: "/>
+                            </HBox>
+
+                            <VBox>
+                                <HBox spacing="10">
+                                    <Label text="Send random integers:"/>
+                                    <CheckBox fx:id="integerCheck" onAction="#handleOnlyIntCheckAction"/>
+                                </HBox>
+
+                                <HBox alignment="TOP_RIGHT">
+                                    <Button onAction="#handleSubmitButtonAction" styleClass="submit-button"/>
+                                </HBox>
+                            </VBox>
+
+                            <HBox>
+                                <padding>
+                                    <Insets top="10" right="10"/>
+                                </padding>
+                                <VBox minWidth="400" alignment="BASELINE_LEFT">
+
+                                </VBox>
+
+                                <VBox minWidth="400" alignment="BASELINE_RIGHT">
+                                    <ScrollPane>
+                                        <TableView>
+                                            <columns>
+                                                <TableColumn text="N" minWidth="25"/>
+                                                <TableColumn text="Messages" minWidth="300"/>
+                                            </columns>
+                                        </TableView>
+                                    </ScrollPane>
+                                </VBox>
+                            </HBox>
+
+                        </VBox>
+                    </HBox>
+                </StackPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+</BorderPane>
