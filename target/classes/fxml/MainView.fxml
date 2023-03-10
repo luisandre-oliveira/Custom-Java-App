@@ -7,7 +7,7 @@
 
 <BorderPane prefHeight="600" prefWidth="1000" styleClass="shadow-pane" stylesheets="@../css/application.css"
             xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.edencoding.controllers.MainViewController">
+            fx:controller="com.piti.controllers.MainViewController">
     <center>
         <!-- Vertical box to group the horizontal boxes -->
         <VBox id="dragTarget" spacing="10" styleClass="background-pane">
@@ -48,44 +48,9 @@
                                 <Button onAction="#handleExitButtonClicked" styleClass="exit-button"/>
                             </HBox>
 
-                            <HBox HBox.hgrow="ALWAYS">
-                                <padding>
-                                    <Insets top="10" bottom="10"/>
-                                </padding>
-                                <TextArea fx:id="textArea" minHeight="250" HBox.hgrow="ALWAYS" promptText="Sentence to send: "/>
-                            </HBox>
-
-                            <VBox>
-                                <HBox spacing="10">
-                                    <Label text="Only use integers:"/>
-                                    <CheckBox fx:id="integerCheck" onAction="#handleOnlyIntCheckAction"/>
-                                </HBox>
-
-                                <HBox alignment="TOP_RIGHT">
-                                    <Button fx:id="submitButton" onAction="#handleSubmitButtonAction" styleClass="send-button"/>
-                                </HBox>
-                            </VBox>
-
-                            <HBox>
-                                <padding>
-                                    <Insets top="10" right="10"/>
-                                </padding>
-                                <VBox minWidth="400" alignment="BASELINE_LEFT">
-
-                                </VBox>
-
-                                <VBox minWidth="400" alignment="BASELINE_RIGHT">
-                                    <ScrollPane>
-                                        <TableView fx:id="historyTable">
-
-                                            <columns>
-                                                <TableColumn text="N" minWidth="25"/>
-                                                <TableColumn text="Messages" minWidth="300"/>
-                                            </columns>
-
-                                        </TableView>
-                                    </ScrollPane>
-                                </VBox>
+                            <HBox alignment="CENTER" spacing="20" VBox.vgrow="ALWAYS">
+                                <Button text="Emitter" onAction="#handleEmitterViewAction" styleClass="main-view-button"/>
+                                <Button text="Receiver" onAction="#handleReceiverViewAction" styleClass="main-view-button"/>
                             </HBox>
                         </VBox>
                     </HBox>

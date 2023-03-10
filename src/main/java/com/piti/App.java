@@ -1,4 +1,4 @@
-package com.edencoding;
+package com.piti;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +13,15 @@ import java.util.Objects;
 
 public class App extends Application {
 
+    public static Stage stage;
     private double xOffset;
     private double yOffset;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/MainView.fxml")));
+
+        stage = primaryStage;
 
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
@@ -44,7 +47,11 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) { launch(args); }
+
+    public static Stage getStage() {
+        return stage;
     }
+
 }
+

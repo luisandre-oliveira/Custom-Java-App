@@ -1,4 +1,4 @@
-package com.edencoding.models;
+package com.piti.models;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;

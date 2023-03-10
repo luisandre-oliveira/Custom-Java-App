@@ -45,7 +45,7 @@
                     <release>${maven.compiler.release}</release>
                     <jlinkImageName>javafx-ui</jlinkImageName>
                     <launcher>launcher</launcher>
-                    <mainClass>javafx-ui/com.edencoding.App</mainClass>
+                    <mainClass>javafx-ui/com.piti.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
