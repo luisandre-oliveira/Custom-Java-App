@@ -13,30 +13,19 @@
     -almost-transparent: #FFFFFF22;
 }
 
+.shadow-pane{
+   -fx-background-color: transparent;
+   -fx-background-radius: 10px;
+}
+
 .background-pane{
     -fx-padding: 5px;
     -fx-background-color: -white;
-   -fx-background-radius: 10px;
+    -fx-background-radius: 10px;
  }
-
-.shadow-pane{
-   -fx-background-color: transparent;
-}
-
-.content-pane{
-   -fx-background-color: -almost-transparent;
-   -fx-spacing: 35px;
-   -fx-padding: 25px;
-   -fx-alignment: center;
-}
 
 .transparent{
    -fx-background-color: transparent;
-}
-
-.highlight-rectangle{
-   -fx-background-color: derive(-primary, 50%);
-   -fx-background-radius: 5px;
 }
 
 .label{
@@ -116,14 +105,6 @@
 }
 
 .submit-button {
-    -height: 20;
-    -width:  20;
-
-    -fx-min-height: -height;
-    -fx-min-width: -width;
-    -fx-max-height: -height;
-    -fx-max-width: -width;
-
     -fx-shape: "M0 100 L10 60 L50 50 L10 40 L0 0 L100 50"
 }
 

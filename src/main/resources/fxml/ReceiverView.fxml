@@ -2,14 +2,15 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.shape.Line?>
-<BorderPane prefHeight="600.0" prefWidth="1000.0" styleClass="shadow-pane" stylesheets="@../css/application.css"
+
+<BorderPane prefHeight="600" prefWidth="1000" styleClass="shadow-pane" stylesheets="@../css/application.css"
             xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.piti.controllers.ReceiverViewController">
 
     <center>
+        <!-- Vertical box to group the horizontal boxes -->
         <VBox id="dragTarget" spacing="10" styleClass="background-pane">
             <ScrollPane styleClass="transparent-background" fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS">
                 <StackPane id="contentContainer">

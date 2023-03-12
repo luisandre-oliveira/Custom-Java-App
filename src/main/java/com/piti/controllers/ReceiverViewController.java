@@ -14,10 +14,11 @@ import java.util.Objects;
 public class ReceiverViewController {
 
     @FXML
-    private void handleExitButtonClicked() throws IOException {
+    private void handleExitButtonClicked(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/MainView.fxml")));
         Scene newScene = new Scene(root);
         App.getStage().setScene(newScene);
+        event.consume();
     }
 
     @FXML

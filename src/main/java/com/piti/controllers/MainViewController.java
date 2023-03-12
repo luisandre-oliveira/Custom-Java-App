@@ -37,17 +37,19 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void handleEmitterViewAction() throws IOException {
+    private void handleEmitterViewAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/EmitterView.fxml")));
         Scene newScene = new Scene(root);
         App.getStage().setScene(newScene);
+        event.consume();
     }
 
     @FXML
-    private void handleReceiverViewAction() throws IOException {
+    private void handleReceiverViewAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ReceiverView.fxml")));
         Scene newScene = new Scene(root);
         App.getStage().setScene(newScene);
+        event.consume();
     }
 
 }
