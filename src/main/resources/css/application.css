@@ -121,8 +121,7 @@
 }
 
 .return-button {
-    /* -fx-shape: "M0 10 L20 20 L18 15 L40 15 L40 5 18 5 L20 0"; */
-    -fx-shape: "M 10,0 L 0,10 L 10,20 H 5 V 30 H 25 V 20 H 30 L 20,10 L 30,0 H 10 z";
+    -fx-shape: "M0 10 L20 20 L18 15 L30 15 L30 5 18 5 L20 0";
 }
 
 .return-button:hover {

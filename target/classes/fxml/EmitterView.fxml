@@ -45,7 +45,7 @@
 
                             <!-- HBox for the buttons -->
                             <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
-                                <Button onAction="#handleReturnButtonClicked" styleClass="exit-button"/>
+                                <Button onAction="#handleReturnButtonClicked" styleClass="return-button"/>
                             </HBox>
 
                             <HBox HBox.hgrow="ALWAYS">

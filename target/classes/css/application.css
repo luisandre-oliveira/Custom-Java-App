@@ -18,11 +18,6 @@
    -fx-background-radius: 10px;
 }
 
-.new-pane {
-    -fx-background-color: transparent;
-   -fx-background-radius: 10px;
-}
-
 .background-pane{
     -fx-padding: 5px;
     -fx-background-color: -white;
@@ -110,7 +105,7 @@
 }
 
 .submit-button {
-    -fx-shape: "M0 100 L10 60 L50 50 L10 40 L0 0 L100 50"
+    -fx-shape: "M0 100 L10 60 L50 50 L10 40 L0 0 L100 50";
 }
 
 .git-button {
@@ -124,3 +119,12 @@
 .exit-button:hover {
     -fill: -red;
 }
+
+.return-button {
+    -fx-shape: "M0 10 L20 20 L18 15 L30 15 L30 5 18 5 L20 0";
+}
+
+.return-button:hover {
+    -fill: -red;
+}
+
