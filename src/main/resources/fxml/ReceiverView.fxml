@@ -45,8 +45,7 @@
 
                             <!-- HBox for the buttons -->
                             <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
-                                <Button onAction="#handleGitButtonClicked" styleClass="git-button"/>
-                                <Button onAction="#handleExitButtonClicked" styleClass="exit-button"/>
+                                <Button onAction="#handleReturnButtonClicked" styleClass="exit-button"/>
                             </HBox>
 
                         </VBox>

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -40,7 +41,11 @@ public class MainViewController implements Initializable {
     private void handleEmitterViewAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/EmitterView.fxml")));
         Scene newScene = new Scene(root);
-        App.getStage().setScene(newScene);
+        newScene.setFill(Color.TRANSPARENT);
+
+        Stage newStage = App.getStage();
+        newStage.setScene(newScene);
+
         event.consume();
     }
 
@@ -48,7 +53,11 @@ public class MainViewController implements Initializable {
     private void handleReceiverViewAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ReceiverView.fxml")));
         Scene newScene = new Scene(root);
-        App.getStage().setScene(newScene);
+        newScene.setFill(Color.TRANSPARENT);
+
+        Stage newStage = App.getStage();
+        newStage.setScene(newScene);
+
         event.consume();
     }
 
