@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -29,6 +30,8 @@ public class MainViewController implements Initializable {
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
+    DialogPane dialogPane = alert.getDialogPane();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "57600", "115200");
@@ -37,6 +40,9 @@ public class MainViewController implements Initializable {
         ArrayList<String> ports = createRandomCOM();
         final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
         comboBoxCOM.getItems().addAll(portOptions);
+
+        dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/application.css")).toExternalForm());
+        dialogPane.getStyleClass().add("dialog-pane");
     }
 
     @FXML
@@ -64,10 +70,14 @@ public class MainViewController implements Initializable {
         String port = getCOMPort();
 
         if (port == null) {
-            alert.setContentText("No COM port has been chosen");
+            alert.setTitle("ERROR: COM PORT");
+            alert.setHeaderText("No COM port has been chosen!!");
+            alert.setContentText("Choose a COM port to proceed...");
             alert.show();
         } else if(baudrate == null) {
-            alert.setContentText("No baud rate has been chosen");
+            alert.setTitle("ERROR: BAUD RATE");
+            alert.setHeaderText("No baud rate has been chosen!!");
+            alert.setContentText("Choose a baud rate to proceed...");
             alert.show();
         } else {
             System.out.println("COM port = " + port);
