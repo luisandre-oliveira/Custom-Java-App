@@ -20,7 +20,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/MainView.fxml")));
-
         stage = primaryStage;
 
         root.setOnMousePressed(event -> {

@@ -3,23 +3,40 @@ package com.piti.controllers;
 import com.piti.App;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class MainViewController implements Initializable {
+
+    @FXML
+    ComboBox<String> comboBoxBR = new ComboBox<>();
+
+    @FXML
+    ComboBox<String> comboBoxCOM = new ComboBox<>();
+
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "57600", "115200");
+        comboBoxBR.getItems().addAll(baudrateOptions);
+
+        ArrayList<String> ports = createRandomCOM();
+        final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
+        comboBoxCOM.getItems().addAll(portOptions);
     }
 
     @FXML
@@ -43,8 +60,22 @@ public class MainViewController implements Initializable {
         Scene newScene = new Scene(root);
         newScene.setFill(Color.TRANSPARENT);
 
-        Stage newStage = App.getStage();
-        newStage.setScene(newScene);
+        String baudrate = getBaudRate();
+        String port = getCOMPort();
+
+        if (port == null) {
+            alert.setContentText("No COM port has been chosen");
+            alert.show();
+        } else if(baudrate == null) {
+            alert.setContentText("No baud rate has been chosen");
+            alert.show();
+        } else {
+            System.out.println("COM port = " + port);
+            System.out.println("BaudRate = " + baudrate);
+
+            Stage newStage = App.getStage();
+            newStage.setScene(newScene);
+        }
 
         event.consume();
     }
@@ -55,10 +86,52 @@ public class MainViewController implements Initializable {
         Scene newScene = new Scene(root);
         newScene.setFill(Color.TRANSPARENT);
 
-        Stage newStage = App.getStage();
-        newStage.setScene(newScene);
+        String baudrate = getBaudRate();
+        String port = getCOMPort();
+
+        if (port == null) {
+            alert.setContentText("No COM port has been chosen");
+            alert.show();
+        } else if(baudrate == null) {
+            alert.setContentText("No baud rate has been chosen");
+            alert.show();
+        } else {
+            System.out.println("COM port= " + port);
+            System.out.println("BaudRate= " + baudrate);
+
+            Stage newStage = App.getStage();
+            newStage.setScene(newScene);
+        }
 
         event.consume();
+    }
+
+    private ArrayList<String> createRandomCOM() {
+        ArrayList<String> COMs = new ArrayList<>();
+
+        int leftLimit = 1, rightLimit = 5, maxNumPorts = 3;
+        int numPorts = (int) (Math.random() + maxNumPorts);
+
+        Random random = new Random();
+
+        for(int i = 0; i < numPorts; i++) {
+            int intTemp = random.nextInt(rightLimit - leftLimit + 1) + leftLimit;
+            String temp = "COM" + intTemp;
+            if(!COMs.contains(temp)) {
+                COMs.add(temp);
+            }
+        }
+
+        Collections.sort(COMs);
+        return COMs;
+    }
+
+    public String getCOMPort() {
+        return comboBoxCOM.valueProperty().getValue();
+    }
+
+    public String getBaudRate() {
+        return comboBoxBR.valueProperty().getValue();
     }
 
 }
