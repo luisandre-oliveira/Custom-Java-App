@@ -54,7 +54,7 @@
                                     <Insets top="15"/>
                                 </padding>
                                 <HBox alignment="CENTER_LEFT" spacing="20">
-                                    <ComboBox fx:id="comboBoxCOM" promptText="Choose COM:"/>
+                                    <ComboBox fx:id="comboBoxCOM" promptText="Choose a port:"/>
                                     <ComboBox fx:id="comboBoxBR" promptText="Choose baudrate:"/>
                                 </HBox>
 

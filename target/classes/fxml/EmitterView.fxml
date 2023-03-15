@@ -34,7 +34,9 @@
                                 </padding>
                                 <Line layoutX="50" layoutY="50" endX="150" stroke="#333333" strokeWidth="2.5"/>
                             </HBox>
-                            <!-- (NEXT) third horizontal box for the next buttons -->
+
+                            <!-- next horizontal box for hypothetical buttons -->
+
                         </VBox>
 
                         <!-- Right side box -->

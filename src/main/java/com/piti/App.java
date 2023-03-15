@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.util.Objects;
 
 public class App extends Application {
@@ -27,6 +26,7 @@ public class App extends Application {
             yOffset = event.getSceneY();
             event.consume();
         });
+
         root.setOnMouseDragged(event -> {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
@@ -48,9 +48,6 @@ public class App extends Application {
 
     public static void main(String[] args) { launch(args); }
 
-    public static Stage getStage() {
-        return stage;
-    }
+    public static Stage getStage() { return stage; }
 
 }
-

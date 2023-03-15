@@ -30,17 +30,28 @@ public class MainViewController implements Initializable {
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
-    DialogPane dialogPane = alert.getDialogPane();
+
+    private static String port;
+    private static String baudrate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "57600", "115200");
-        comboBoxBR.getItems().addAll(baudrateOptions);
-
-        ArrayList<String> ports = createRandomCOM();
+        ArrayList<String> ports = createRandomCOM();  //has a bug now where it gets new ports everytime, but since it will be implemented to read the COM ports anyway...
         final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
+
+        final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "57600", "115200");
+
+        if(getBaudrateFromApp() != null) {
+            comboBoxBR.valueProperty().setValue(getBaudrateFromApp());
+        }
+
+        if(getPortFromApp() != null) {
+            comboBoxCOM.valueProperty().setValue(getPortFromApp());
+        }
+        comboBoxBR.getItems().addAll(baudrateOptions);
         comboBoxCOM.getItems().addAll(portOptions);
 
+        DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/application.css")).toExternalForm());
         dialogPane.getStyleClass().add("dialog-pane");
     }
@@ -83,10 +94,12 @@ public class MainViewController implements Initializable {
             System.out.println("COM port = " + port);
             System.out.println("BaudRate = " + baudrate);
 
+            setPortOnApp(port);
+            setBaudrateOnApp(baudrate);
+
             Stage newStage = App.getStage();
             newStage.setScene(newScene);
         }
-
         event.consume();
     }
 
@@ -112,7 +125,6 @@ public class MainViewController implements Initializable {
             Stage newStage = App.getStage();
             newStage.setScene(newScene);
         }
-
         event.consume();
     }
 
@@ -131,7 +143,6 @@ public class MainViewController implements Initializable {
                 COMs.add(temp);
             }
         }
-
         Collections.sort(COMs);
         return COMs;
     }
@@ -143,5 +154,13 @@ public class MainViewController implements Initializable {
     public String getBaudRate() {
         return comboBoxBR.valueProperty().getValue();
     }
+
+    public static void setPortOnApp(String p) { port = p; }
+
+    public static void setBaudrateOnApp(String br) { baudrate = br; }
+
+    public static String getPortFromApp() { return port; }
+
+    public static String getBaudrateFromApp() { return baudrate; }
 
 }

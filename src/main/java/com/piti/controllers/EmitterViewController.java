@@ -4,6 +4,7 @@ import com.piti.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
@@ -11,10 +12,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class EmitterViewController {
+public class EmitterViewController implements Initializable {
 
     @FXML
     private TextArea textArea;
@@ -23,6 +26,11 @@ public class EmitterViewController {
     private CheckBox integerCheck;
 
     private boolean intCheckFlag;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     @FXML
     private void handleSubmitButtonAction(ActionEvent event) {
@@ -67,7 +75,6 @@ public class EmitterViewController {
 
         Stage newStage = App.getStage();
         newStage.setScene(newScene);
-
         event.consume();
     }
 
