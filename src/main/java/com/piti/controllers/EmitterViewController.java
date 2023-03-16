@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -23,7 +24,13 @@ public class EmitterViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        EmitterTextArea.setOnKeyReleased(event -> {
+            if(event.getCode() == KeyCode.ENTER) {
+                //System.out.println(EmitterTextArea.getText());
+                EmitterTextArea.setText(EmitterTextArea.getText().replace("\n",""));
+                handleSubmitButtonAction(new ActionEvent());
+            }
+        });
     }
 
     @FXML
@@ -34,7 +41,7 @@ public class EmitterViewController implements Initializable {
             temp = EmitterTextArea.getText();
         }
 
-        else if(EmitterTextArea.getText().isEmpty()) {  // if textarea doesn't have text
+        else if(EmitterTextArea.getText().isEmpty()  || EmitterTextArea.getText().equals("")) {  // if textarea doesn't have text
             temp = createRandomMessage();
             EmitterTextArea.setPromptText(temp);
         }
@@ -61,8 +68,9 @@ public class EmitterViewController implements Initializable {
         String temp;
 
         // will print a random set of chars of a random size
+        int minValue = 10, maxValue = 20;
         int leftLimit = 65, rightLimit = 90; //ascii values from capital A to capital Z
-        int numChars = (int) (Math.random() * 10) + 1;
+        int numChars = (int) (Math.random() * maxValue) + minValue;
 
         Random random = new Random();
 

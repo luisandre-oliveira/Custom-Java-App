@@ -50,6 +50,8 @@ public class MainViewController implements Initializable {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/application.css")).toExternalForm());
         dialogPane.getStyleClass().add("dialog-pane");
+
+
     }
 
     @FXML
