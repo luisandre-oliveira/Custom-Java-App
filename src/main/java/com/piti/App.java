@@ -12,9 +12,13 @@ import java.util.Objects;
 
 public class App extends Application {
 
-    public static Stage stage;
+    private static Stage stage;
     private double xOffset;
     private double yOffset;
+
+    public static String baudrate;
+
+    public static String port;
 
     @Override
     public void start(Stage primaryStage) throws Exception {

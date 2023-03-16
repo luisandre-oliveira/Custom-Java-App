@@ -30,10 +30,6 @@ public class MainViewController implements Initializable {
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
-
-    private static String port;
-    private static String baudrate;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<String> ports = createRandomCOM();  //has a bug now where it gets new ports everytime, but since it will be implemented to read the COM ports anyway...
@@ -91,8 +87,8 @@ public class MainViewController implements Initializable {
             alert.setContentText("Choose a baud rate to proceed...");
             alert.show();
         } else {
-            System.out.println("COM port = " + port);
-            System.out.println("BaudRate = " + baudrate);
+            System.out.println("E: COM port = " + port);
+            System.out.println("E: BaudRate = " + baudrate);
 
             setPortOnApp(port);
             setBaudrateOnApp(baudrate);
@@ -113,14 +109,21 @@ public class MainViewController implements Initializable {
         String port = getCOMPort();
 
         if (port == null) {
+            alert.setTitle("ERROR: COM PORT");
             alert.setContentText("No COM port has been chosen");
+            alert.setContentText("Choose a COM port to proceed...");
             alert.show();
         } else if(baudrate == null) {
+            alert.setTitle("ERROR: BAUDRATE ERROR");
             alert.setContentText("No baud rate has been chosen");
+            alert.setContentText("Choose a baud rate to proceed...");
             alert.show();
         } else {
-            System.out.println("COM port= " + port);
-            System.out.println("BaudRate= " + baudrate);
+            System.out.println("R: COM port= " + port);
+            System.out.println("R: BaudRate= " + baudrate);
+
+            setPortOnApp(port);
+            setBaudrateOnApp(baudrate);
 
             Stage newStage = App.getStage();
             newStage.setScene(newScene);
@@ -147,20 +150,16 @@ public class MainViewController implements Initializable {
         return COMs;
     }
 
-    public String getCOMPort() {
-        return comboBoxCOM.valueProperty().getValue();
-    }
+    public String getCOMPort() { return comboBoxCOM.valueProperty().getValue(); }
 
-    public String getBaudRate() {
-        return comboBoxBR.valueProperty().getValue();
-    }
+    public String getBaudRate() { return comboBoxBR.valueProperty().getValue(); }
 
-    public static void setPortOnApp(String p) { port = p; }
+    public static void setPortOnApp(String p) { App.port = p; }
 
-    public static void setBaudrateOnApp(String br) { baudrate = br; }
+    public static void setBaudrateOnApp(String br) { App.baudrate = br; }
 
-    public static String getPortFromApp() { return port; }
+    public static String getPortFromApp() { return App.port; }
 
-    public static String getBaudrateFromApp() { return baudrate; }
+    public static String getBaudrateFromApp() { return App.baudrate; }
 
 }

@@ -48,6 +48,13 @@
                                 <Button onAction="#handleReturnButtonClicked" styleClass="return-button"/>
                             </HBox>
 
+                            <HBox HBox.hgrow="ALWAYS">
+                                <padding>
+                                    <Insets top="10" bottom="10"/>
+                                </padding>
+                                <TextArea fx:id="ReceiverTextArea" minHeight="250" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+
                         </VBox>
                     </HBox>
                 </StackPane>
