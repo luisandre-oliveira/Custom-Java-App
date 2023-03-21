@@ -35,7 +35,7 @@ public class MainViewController implements Initializable {
         ArrayList<String> ports = createRandomCOM();  //has a bug now where it gets new ports everytime, but since it will be implemented to read the COM ports anyway...
         final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
 
-        final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "57600", "115200");
+        final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "28800", "57600", "115200");
 
         if(getBaudrateFromApp() != null) {
             comboBoxBR.valueProperty().setValue(getBaudrateFromApp());
@@ -77,13 +77,13 @@ public class MainViewController implements Initializable {
         String port = getCOMPort();
 
         if (port == null) {
-            alert.setTitle("ERROR: COM PORT");
-            alert.setHeaderText("No COM port has been chosen!!");
+            alert.setTitle("COM PORT ERROR");
+            alert.setHeaderText("");
             alert.setContentText("Choose a COM port to proceed...");
             alert.show();
         } else if(baudrate == null) {
-            alert.setTitle("ERROR: BAUD RATE");
-            alert.setHeaderText("No baud rate has been chosen!!");
+            alert.setTitle("BAUD RATE ERROR");
+            alert.setHeaderText("");
             alert.setContentText("Choose a baud rate to proceed...");
             alert.show();
         } else {

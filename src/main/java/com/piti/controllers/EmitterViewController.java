@@ -13,9 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class EmitterViewController implements Initializable {
 
@@ -26,7 +24,6 @@ public class EmitterViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         EmitterTextArea.setOnKeyReleased(event -> {
             if(event.getCode() == KeyCode.ENTER) {
-                //System.out.println(EmitterTextArea.getText());
                 EmitterTextArea.setText(EmitterTextArea.getText().replace("\n",""));
                 handleSubmitButtonAction(new ActionEvent());
             }

@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -20,9 +22,14 @@ public class ReceiverViewController implements Initializable {
     @FXML
     private TextArea ReceiverTextArea;
 
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ReceiverTextArea.setEditable(false);
+
+        addText("FIRST MESSAGE");
+        addText("SECOND MESSAGE");
     }
 
     @FXML
@@ -36,4 +43,16 @@ public class ReceiverViewController implements Initializable {
 
         event.consume();
     }
+
+    private void addText(String msg) {
+        LocalDateTime temp = LocalDateTime.now();
+        String time = temp.format(format);
+
+        if(Objects.equals(ReceiverTextArea.getText(), "")) {
+            ReceiverTextArea.setText(time + " " + msg);
+        } else {
+            ReceiverTextArea.appendText("\n" + time + " " + msg);
+        }
+    }
+
 }

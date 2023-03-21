@@ -61,27 +61,7 @@
                                     <Button onAction="#handleSubmitButtonAction" styleClass="submit-button"/>
                                 </HBox>
                             </VBox>
-<!--
-                            <HBox>
-                                <padding>
-                                    <Insets top="10" right="10"/>
-                                </padding>
-                                <VBox minWidth="400" alignment="BASELINE_LEFT">
 
-                                </VBox>
-
-                                <VBox minWidth="400" alignment="BASELINE_RIGHT">
-                                    <ScrollPane>
-                                        <TableView>
-                                            <columns>
-                                                <TableColumn text="N" minWidth="25"/>
-                                                <TableColumn text="Messages" minWidth="300"/>
-                                            </columns>
-                                        </TableView>
-                                    </ScrollPane>
-                                </VBox>
-                            </HBox>
--->
                         </VBox>
                     </HBox>
                 </StackPane>
