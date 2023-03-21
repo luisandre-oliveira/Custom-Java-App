@@ -50,8 +50,6 @@ public class MainViewController implements Initializable {
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/application.css")).toExternalForm());
         dialogPane.getStyleClass().add("dialog-pane");
-
-
     }
 
     @FXML
@@ -121,8 +119,8 @@ public class MainViewController implements Initializable {
             alert.setContentText("Choose a baud rate to proceed...");
             alert.show();
         } else {
-            System.out.println("R: COM port= " + port);
-            System.out.println("R: BaudRate= " + baudrate);
+            System.out.println("R: COM port = " + port);
+            System.out.println("R: BaudRate = " + baudrate);
 
             setPortOnApp(port);
             setBaudrateOnApp(baudrate);

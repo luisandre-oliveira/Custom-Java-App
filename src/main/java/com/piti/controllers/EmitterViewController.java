@@ -81,5 +81,4 @@ public class EmitterViewController implements Initializable {
 
         return temp;
     }
-
 }

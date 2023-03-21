@@ -36,5 +36,4 @@ public class ReceiverViewController implements Initializable {
 
         event.consume();
     }
-
 }
