@@ -44,7 +44,7 @@ public class App extends Application {
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
         primaryStage.setTitle("PITI APP");
-        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/PITI-modified.png"))));
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/logo-PITI.png"))));
 
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -66,19 +66,16 @@
                                 <padding>
                                     <Insets top="15"/>
                                 </padding>
+                                <!-- HBox for the ComboBoxes -->
                                 <HBox alignment="CENTER_LEFT" spacing="20">
-                                    <padding>
-                                        <Insets left="10"/>
-                                    </padding>
                                     <ComboBox fx:id="comboBoxCOM" promptText="Choose a port:"/>
                                     <ComboBox fx:id="comboBoxBR" promptText="Choose a baudrate:"/>
                                 </HBox>
-
+                                <!-- HBox for the buttons -->
                                 <HBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
                                     <Button text="Emitter" onAction="#handleEmitterViewAction" styleClass="main-view-button"/>
                                     <Button text="Receiver" onAction="#handleReceiverViewAction" styleClass="main-view-button"/>
                                 </HBox>
-
                             </VBox>
                         </VBox>
                     </HBox>
