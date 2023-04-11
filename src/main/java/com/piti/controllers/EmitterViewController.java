@@ -34,18 +34,15 @@ public class EmitterViewController implements Initializable {
     private void handleSubmitButtonAction(ActionEvent event) {
         String temp = "";
 
-        if(!EmitterTextArea.getText().isEmpty()) { // if textarea has text
+        if(!EmitterTextArea.getText().isEmpty()) { // if TextArea has text
             temp = EmitterTextArea.getText();
-        }
-
-        else if(EmitterTextArea.getText().isEmpty()  || EmitterTextArea.getText().equals("")) {  // if textarea doesn't have text
+        } else if(EmitterTextArea.getText().isEmpty()  || EmitterTextArea.getText().equals("")) {  // if TextArea doesn't have text
             temp = createRandomMessage();
             EmitterTextArea.setPromptText(temp);
         }
 
         EmitterTextArea.setText("");
         System.out.println("Message: " + temp);
-
         event.consume();
     }
 
@@ -64,8 +61,7 @@ public class EmitterViewController implements Initializable {
     private String createRandomMessage() {
         String temp;
 
-        // will print a random set of chars of a random size
-        int minValue = 10, maxValue = 20;
+        int minValue = 10, maxValue = 20; // will print a random set of chars of a random size between this two values
         int leftLimit = 65, rightLimit = 90; //ascii values from capital A to capital Z
         int numChars = (int) (Math.random() * maxValue) + minValue;
 

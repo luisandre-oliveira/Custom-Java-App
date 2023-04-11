@@ -28,13 +28,20 @@ public class MainViewController implements Initializable {
     @FXML
     ComboBox<String> comboBoxCOM = new ComboBox<>();
 
-    Alert alert = new Alert(Alert.AlertType.ERROR);
+    ArrayList<String> ports = new ArrayList<>();
+
+    final Alert alert = new Alert(Alert.AlertType.ERROR);
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ArrayList<String> ports = createRandomCOM();  //has a bug now where it gets new ports everytime, but since it will be implemented to read the COM ports anyway...
-        final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
+        if(getListPortsOnApp().size() == 0) {
+            ports.addAll(createRandomCOM());
+            setListPortsOnApp(ports);
+        } else {
+            ports.addAll(getListPortsOnApp());
+        }
 
+        final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
         final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "28800", "57600", "115200");
 
         if(getBaudrateFromApp() != null) {
@@ -44,6 +51,7 @@ public class MainViewController implements Initializable {
         if(getPortFromApp() != null) {
             comboBoxCOM.valueProperty().setValue(getPortFromApp());
         }
+
         comboBoxBR.getItems().addAll(baudrateOptions);
         comboBoxCOM.getItems().addAll(portOptions);
 
@@ -77,18 +85,12 @@ public class MainViewController implements Initializable {
         String port = getCOMPort();
 
         if (port == null) {
-            alert.setTitle("COM PORT ERROR");
-            alert.setHeaderText("");
-            alert.setContentText("Choose a COM port to proceed...");
-            alert.show();
+            alertNullPort();
         } else if(baudrate == null) {
-            alert.setTitle("BAUD RATE ERROR");
-            alert.setHeaderText("");
-            alert.setContentText("Choose a baud rate to proceed...");
-            alert.show();
+            alertNullBaudrate();
         } else {
-            System.out.println("E: COM port = " + port);
-            System.out.println("E: BaudRate = " + baudrate);
+            System.out.println("\nE: COM port = " + port);
+            System.out.println("E: Baudrate = " + baudrate);
 
             setPortOnApp(port);
             setBaudrateOnApp(baudrate);
@@ -109,18 +111,12 @@ public class MainViewController implements Initializable {
         String port = getCOMPort();
 
         if (port == null) {
-            alert.setTitle("ERROR: COM PORT");
-            alert.setContentText("No COM port has been chosen");
-            alert.setContentText("Choose a COM port to proceed...");
-            alert.show();
+            alertNullPort();
         } else if(baudrate == null) {
-            alert.setTitle("ERROR: BAUDRATE ERROR");
-            alert.setContentText("No baud rate has been chosen");
-            alert.setContentText("Choose a baud rate to proceed...");
-            alert.show();
+            alertNullBaudrate();
         } else {
-            System.out.println("R: COM port = " + port);
-            System.out.println("R: BaudRate = " + baudrate);
+            System.out.println("\nR: COM port = " + port);
+            System.out.println("R: BaurRate = " + baudrate);
 
             setPortOnApp(port);
             setBaudrateOnApp(baudrate);
@@ -129,6 +125,20 @@ public class MainViewController implements Initializable {
             newStage.setScene(newScene);
         }
         event.consume();
+    }
+
+    private void alertNullPort() {
+        alert.setTitle("ERROR: COM PORT");
+        alert.setContentText("No COM port has been chosen");
+        alert.setContentText("Choose a COM port to proceed...");
+        alert.show();
+    }
+
+    private void alertNullBaudrate() {
+        alert.setTitle("ERROR: BAUDRATE ERROR");
+        alert.setContentText("No baud rate has been chosen");
+        alert.setContentText("Choose a baud rate to proceed...");
+        alert.show();
     }
 
     private ArrayList<String> createRandomCOM() {
@@ -151,15 +161,14 @@ public class MainViewController implements Initializable {
     }
 
     public String getCOMPort() { return comboBoxCOM.valueProperty().getValue(); }
-
     public String getBaudRate() { return comboBoxBR.valueProperty().getValue(); }
 
-    public static void setPortOnApp(String p) { App.port = p; }
+    private static void setPortOnApp(String p) { App.port = p; }
+    private static void setBaudrateOnApp(String br) { App.baudrate = br; }
+    private static void setListPortsOnApp(ArrayList<String> temp) { App.ports.addAll(temp); }
 
-    public static void setBaudrateOnApp(String br) { App.baudrate = br; }
-
-    public static String getPortFromApp() { return App.port; }
-
-    public static String getBaudrateFromApp() { return App.baudrate; }
+    private static String getPortFromApp() { return App.port; }
+    private static String getBaudrateFromApp() { return App.baudrate; }
+    private static ArrayList<String> getListPortsOnApp() { return App.ports; }
 
 }

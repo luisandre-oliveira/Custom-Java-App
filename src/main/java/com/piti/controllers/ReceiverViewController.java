@@ -22,7 +22,7 @@ public class ReceiverViewController implements Initializable {
     @FXML
     private TextArea ReceiverTextArea;
 
-    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    final DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,9 +44,9 @@ public class ReceiverViewController implements Initializable {
         event.consume();
     }
 
-    private void addText(String msg) {
-        LocalDateTime temp = LocalDateTime.now();
-        String time = temp.format(format);
+    public void addText(String msg) {
+        LocalDateTime ldt = LocalDateTime.now();
+        String time = ldt.format(format);
 
         if(Objects.equals(ReceiverTextArea.getText(), "")) {
             ReceiverTextArea.setText(time + " " + msg);
@@ -54,5 +54,4 @@ public class ReceiverViewController implements Initializable {
             ReceiverTextArea.appendText("\n" + time + " " + msg);
         }
     }
-
 }

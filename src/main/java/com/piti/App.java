@@ -8,6 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class App extends Application {
@@ -16,9 +18,9 @@ public class App extends Application {
     private double xOffset;
     private double yOffset;
 
-    public static String baudrate;
-
     public static String port;
+    public static String baudrate;
+    public static ArrayList<String> ports = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
