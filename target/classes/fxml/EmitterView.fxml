@@ -34,7 +34,6 @@
                                 </padding>
                                 <Line layoutX="50" layoutY="50" endX="150" stroke="#333333" strokeWidth="2.5"/>
                             </HBox>
-
                             <!-- next horizontal box for hypothetical buttons -->
                         </VBox>
 
@@ -43,25 +42,21 @@
                             <padding>
                                 <Insets top="10" bottom="10" left="10" right="10"/>
                             </padding>
-
                             <!-- HBox for the buttons -->
                             <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
                                 <Button onAction="#handleReturnButtonClicked" styleClass="return-button"/>
                             </HBox>
-
+                            <!-- HBox for writing the messages -->
                             <HBox HBox.hgrow="ALWAYS">
                                 <padding>
                                     <Insets top="10" bottom="10"/>
                                 </padding>
                                 <TextArea fx:id="EmitterTextArea" minHeight="250" HBox.hgrow="ALWAYS" promptText="Sentence to send: "/>
                             </HBox>
-
-                            <VBox>
-                                <HBox alignment="TOP_RIGHT">
-                                    <Button onAction="#handleSubmitButtonAction" styleClass="submit-button"/>
-                                </HBox>
-                            </VBox>
-
+                            <!-- HBox for the submit button -->
+                            <HBox alignment="TOP_RIGHT">
+                                <Button onAction="#handleSubmitButtonAction" styleClass="submit-button"/>
+                            </HBox>
                         </VBox>
                     </HBox>
                 </StackPane>

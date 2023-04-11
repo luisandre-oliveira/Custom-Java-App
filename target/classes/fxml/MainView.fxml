@@ -20,12 +20,10 @@
                             <!-- first horizontal box for the title and the retract button -->
                             <HBox>
                                 <!-- first vertical here for the title -->
-                                <VBox>
-                                    <padding>
-                                        <Insets top="10" left="10"/>
-                                    </padding>
-                                    <Label text="PITI APP" styleClass="main-text"/>
-                                </VBox>
+                                <padding>
+                                    <Insets top="10" left="10"/>
+                                </padding>
+                                <Label text="PITI APP" styleClass="main-text"/>
                             </HBox>
                             <!-- second horizontal box for the line -->
                             <HBox>
@@ -34,7 +32,22 @@
                                 </padding>
                                 <Line layoutX="50" layoutY="50" endX="150" stroke="#333333" strokeWidth="2.5"/>
                             </HBox>
-                            <!-- (NEXT) third horizontal box for the next buttons -->
+                            <!-- region to force the rest of the next components to the bottom -->
+                            <Region VBox.vgrow="ALWAYS"/>
+                            <!-- third horizontal box for the line -->
+                            <HBox>
+                                <padding>
+                                    <Insets bottom="10"/>
+                                </padding>
+                                <Line layoutX="50" layoutY="50" endX="150" stroke="#333333" strokeWidth="2.5"/>
+                            </HBox>
+                            <!-- fourth horizontal box for the version -->
+                            <HBox>
+                                <padding>
+                                    <Insets bottom="10" left="10"/>
+                                </padding>
+                                <Label text="UI VERSION: v1.5.1" styleClass="version-text"/>
+                            </HBox>
                         </VBox>
 
                         <!-- Right side box -->
@@ -54,8 +67,11 @@
                                     <Insets top="15"/>
                                 </padding>
                                 <HBox alignment="CENTER_LEFT" spacing="20">
+                                    <padding>
+                                        <Insets left="10"/>
+                                    </padding>
                                     <ComboBox fx:id="comboBoxCOM" promptText="Choose a port:"/>
-                                    <ComboBox fx:id="comboBoxBR" promptText="Choose baudrate:"/>
+                                    <ComboBox fx:id="comboBoxBR" promptText="Choose a baudrate:"/>
                                 </HBox>
 
                                 <HBox alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">

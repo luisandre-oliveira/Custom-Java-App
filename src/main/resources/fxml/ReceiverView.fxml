@@ -42,19 +42,17 @@
                             <padding>
                                 <Insets top="10" bottom="10" left="10" right="10"/>
                             </padding>
-
                             <!-- HBox for the buttons -->
                             <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
                                 <Button onAction="#handleReturnButtonClicked" styleClass="return-button"/>
                             </HBox>
-
+                            <!-- HBox for reading the messages -->
                             <HBox HBox.hgrow="ALWAYS">
                                 <padding>
                                     <Insets top="10" bottom="10"/>
                                 </padding>
                                 <TextArea fx:id="ReceiverTextArea" minHeight="250" HBox.hgrow="ALWAYS"/>
                             </HBox>
-
                         </VBox>
                     </HBox>
                 </StackPane>
