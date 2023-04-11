@@ -1,5 +1,6 @@
 package com.piti.controllers;
 
+import com.fazecast.jSerialComm.SerialPort;
 import com.piti.App;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -34,12 +35,18 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(getListPortsOnApp().size() == 0) {
-            ports.addAll(createRandomCOM());
-            setListPortsOnApp(ports);
-        } else {
-            ports.addAll(getListPortsOnApp());
+
+        ports = getAvailableCOMPorts();
+
+        if(ports.size() == 0) {
+            if(getListPortsOnApp().size() == 0) {
+                ports.addAll(createRandomCOM());
+                setListPortsOnApp(ports);
+            } else {
+                ports.addAll(getListPortsOnApp());
+            }
         }
+
 
         final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
         final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "28800", "57600", "115200");
@@ -116,7 +123,7 @@ public class MainViewController implements Initializable {
             alertNullBaudrate();
         } else {
             System.out.println("\nR: COM port = " + port);
-            System.out.println("R: BaurRate = " + baudrate);
+            System.out.println("R: Baudrate = " + baudrate);
 
             setPortOnApp(port);
             setBaudrateOnApp(baudrate);
@@ -158,6 +165,19 @@ public class MainViewController implements Initializable {
         }
         Collections.sort(COMs);
         return COMs;
+    }
+
+    private ArrayList<String> getAvailableCOMPorts() {
+        SerialPort[] ports = SerialPort.getCommPorts();
+        ArrayList<String> temp = new ArrayList<>();
+        String name;
+
+        for (SerialPort port : ports) {
+            name = port.getSystemPortName() + ": " + port;
+            temp.add(name);
+        }
+
+        return temp;
     }
 
     public String getCOMPort() { return comboBoxCOM.valueProperty().getValue(); }
