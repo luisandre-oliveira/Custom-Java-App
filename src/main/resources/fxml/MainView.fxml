@@ -69,6 +69,7 @@
                                 </padding>
                                 <!-- HBox for the ComboBoxes -->
                                 <HBox alignment="CENTER_LEFT" spacing="20">
+                                    <Button onAction="#handleRefreshCOMPorts" styleClass="refresh-button"/>
                                     <ComboBox fx:id="comboBoxCOM" promptText="Choose a port:"/>
                                     <ComboBox fx:id="comboBoxBR" promptText="Choose a baudrate:"/>
                                 </HBox>

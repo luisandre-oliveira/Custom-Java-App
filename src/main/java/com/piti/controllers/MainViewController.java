@@ -2,6 +2,7 @@ package com.piti.controllers;
 
 import com.fazecast.jSerialComm.SerialPort;
 import com.piti.App;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DialogPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -36,37 +38,25 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/application.css")).toExternalForm());
+        dialogPane.getStyleClass().add("dialog-pane");
 
         ports = getAvailableCOMPorts();
-
-        if(ports.size() == 0) {
-            if(getListPortsFromApp().size() == 0) {
-                // let's create some random COMs for testing purposes
-                ports.addAll(createRandomCOM());
-                setListPortsOnApp(ports);
-            } else {
-                ports.addAll(getListPortsFromApp());
-                // not necessary to set on app level because it´s better to check again
-            }
-        }
 
         final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
         final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "28800", "57600", "115200");
 
-        if(getBaudrateFromApp() != null) {
+        if (getBaudrateFromApp() != null) {
             comboBoxBR.valueProperty().setValue(getBaudrateFromApp());
         }
 
-        if(getPortFromApp() != null) {
+        if (getPortFromApp() != null) {
             comboBoxCOM.valueProperty().setValue(getPortFromApp());
         }
 
         comboBoxBR.getItems().addAll(baudrateOptions);
         comboBoxCOM.getItems().addAll(portOptions);
-
-        DialogPane dialogPane = alert.getDialogPane();
-        dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/application.css")).toExternalForm());
-        dialogPane.getStyleClass().add("dialog-pane");
     }
 
     @FXML
@@ -79,7 +69,8 @@ public class MainViewController implements Initializable {
     private void handleGitButtonClicked(ActionEvent event) {
         new Application() {
             @Override
-            public void start(Stage stage) { }
+            public void start(Stage stage) {
+            }
         }.getHostServices().showDocument("https://github.com/joseluisgomes/PITI/");
         event.consume();
     }
@@ -91,24 +82,32 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
+    private void handleRefreshCOMPorts() {
+        ports = getAvailableCOMPorts();
+        System.out.println(ports);
+        //setListPortsOnApp(ports);
+        comboBoxCOM.setItems(FXCollections.observableArrayList(ports));
+    }
+
+    @FXML
     private void handleEmitterViewAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/EmitterView.fxml")));
         Scene newScene = new Scene(root);
         newScene.setFill(Color.TRANSPARENT);
 
-        String baudrate = getBaudRate();
-        String port = getCOMPort();
+        String tempBaudrate = getBaudrateFromCB();
+        String tempPort = getCOMPortNameFromCB();
 
-        if (port == null) {
+        if (tempPort == null) {
             alertNullPort();
-        } else if(baudrate == null) {
+        } else if (tempBaudrate == null) {
             alertNullBaudrate();
         } else {
-            System.out.println("\nE: COM port = " + port);
-            System.out.println("E: Baudrate = " + baudrate);
+            System.out.println("\nE: COM port = " + tempPort);
+            System.out.println("E: Baudrate = " + tempBaudrate);
 
-            setPortOnApp(port);
-            setBaudrateOnApp(baudrate);
+            setPortOnApp(tempPort);
+            setBaudrateOnApp(tempBaudrate);
 
             Stage newStage = App.getStage();
             newStage.setScene(newScene);
@@ -122,19 +121,19 @@ public class MainViewController implements Initializable {
         Scene newScene = new Scene(root);
         newScene.setFill(Color.TRANSPARENT);
 
-        String baudrate = getBaudRate();
-        String port = getCOMPort();
+        String tempBaudrate = getBaudrateFromCB();
+        String tempPort = getCOMPortNameFromCB();
 
-        if (port == null) {
+        if (tempPort == null) {
             alertNullPort();
-        } else if(baudrate == null) {
+        } else if (tempBaudrate == null) {
             alertNullBaudrate();
         } else {
-            System.out.println("\nR: COM port = " + port);
-            System.out.println("R: Baudrate = " + baudrate);
+            System.out.println("\nR: COM port = " + tempPort);
+            System.out.println("R: Baudrate = " + tempBaudrate);
 
-            setPortOnApp(port);
-            setBaudrateOnApp(baudrate);
+            setPortOnApp(tempPort);
+            setBaudrateOnApp(tempBaudrate);
 
             Stage newStage = App.getStage();
             newStage.setScene(newScene);
@@ -164,10 +163,10 @@ public class MainViewController implements Initializable {
 
         Random random = new Random();
 
-        for(int i = 0; i < numPorts; i++) {
+        for (int i = 0; i < numPorts; i++) {
             int intTemp = random.nextInt(rightLimit - leftLimit + 1) + leftLimit;
             String temp = "COM" + intTemp;
-            if(!COMs.contains(temp)) {
+            if (!COMs.contains(temp)) {
                 COMs.add(temp);
             }
         }
@@ -188,15 +187,16 @@ public class MainViewController implements Initializable {
         return temp;
     }
 
-    public String getCOMPort() { return comboBoxCOM.valueProperty().getValue(); }
-    public String getBaudRate() { return comboBoxBR.valueProperty().getValue(); }
+    public String getCOMPortNameFromCB() { return comboBoxCOM.valueProperty().getValue(); }
+
+    public String getBaudrateFromCB() { return comboBoxBR.valueProperty().getValue(); }
 
     private static void setPortOnApp(String p) { App.port = p; }
-    private static void setBaudrateOnApp(String br) { App.baudrate = br; }
-    private static void setListPortsOnApp(ArrayList<String> temp) { App.portsApp.addAll(temp); }
 
-    private static String getPortFromApp() { return App.port; }
-    private static String getBaudrateFromApp() { return App.baudrate; }
-    private static ArrayList<String> getListPortsFromApp() { return App.portsApp; }
+    private static void setBaudrateOnApp(String br) { App.baudrate = br; }
+
+    public static String getPortFromApp() { return App.port; }
+
+    public static String getBaudrateFromApp() { return App.baudrate; }
 
 }
