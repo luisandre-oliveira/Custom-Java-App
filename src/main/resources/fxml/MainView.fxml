@@ -59,6 +59,7 @@
                             <!-- HBox for the buttons -->
                             <HBox alignment="CENTER_RIGHT" spacing="10" HBox.hgrow="ALWAYS">
                                 <Button onAction="#handleGitButtonClicked" styleClass="git-button"/>
+                                <Button onAction="#handleMinimizeButtonClicked" styleClass="minimize-button"/>
                                 <Button onAction="#handleExitButtonClicked" styleClass="exit-button"/>
                             </HBox>
 
