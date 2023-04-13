@@ -61,7 +61,7 @@ public class EmitterViewController implements Initializable {
     private String createRandomMessage() {
         String temp;
 
-        int minValue = 10, maxValue = 20; // will print a random set of chars of a random size between this two values
+        int minValue = 10, maxValue = 40; // will print a random set of chars of a random size between this two values
         int leftLimit = 65, rightLimit = 90; //ascii values from capital A to capital Z
         int numChars = (int) (Math.random() * maxValue) + minValue;
 

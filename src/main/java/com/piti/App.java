@@ -20,7 +20,7 @@ public class App extends Application {
 
     public static String port;
     public static String baudrate;
-    public static ArrayList<String> ports = new ArrayList<>();
+    public static ArrayList<String> portsApp = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {

@@ -39,14 +39,15 @@ public class MainViewController implements Initializable {
         ports = getAvailableCOMPorts();
 
         if(ports.size() == 0) {
-            if(getListPortsOnApp().size() == 0) {
+            if(getListPortsFromApp().size() == 0) {
+                // let's create some random COMs for testing purposes
                 ports.addAll(createRandomCOM());
                 setListPortsOnApp(ports);
             } else {
-                ports.addAll(getListPortsOnApp());
+                ports.addAll(getListPortsFromApp());
+                // not necessary to set on app level because it´s better to check again
             }
         }
-
 
         final ObservableList<String> portOptions = FXCollections.observableArrayList(ports);
         final ObservableList<String> baudrateOptions = FXCollections.observableArrayList("2400", "9600", "28800", "57600", "115200");
@@ -185,10 +186,10 @@ public class MainViewController implements Initializable {
 
     private static void setPortOnApp(String p) { App.port = p; }
     private static void setBaudrateOnApp(String br) { App.baudrate = br; }
-    private static void setListPortsOnApp(ArrayList<String> temp) { App.ports.addAll(temp); }
+    private static void setListPortsOnApp(ArrayList<String> temp) { App.portsApp.addAll(temp); }
 
     private static String getPortFromApp() { return App.port; }
     private static String getBaudrateFromApp() { return App.baudrate; }
-    private static ArrayList<String> getListPortsOnApp() { return App.ports; }
+    private static ArrayList<String> getListPortsFromApp() { return App.portsApp; }
 
 }
