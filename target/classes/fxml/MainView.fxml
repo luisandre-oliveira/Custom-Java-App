@@ -46,7 +46,7 @@
                                 <padding>
                                     <Insets bottom="10" left="10"/>
                                 </padding>
-                                <Label text="UI VERSION: v1.5.1" styleClass="version-text"/>
+                                <Label text="UI VERSION: v1.6.0" styleClass="version-text"/>
                             </HBox>
                         </VBox>
 
@@ -69,7 +69,7 @@
                                 </padding>
                                 <!-- HBox for the ComboBoxes -->
                                 <HBox alignment="CENTER_LEFT" spacing="20">
-                                    <Button onAction="#handleRefreshCOMPorts" styleClass="refresh-button"/>
+                                    <Button onAction="#handleRefreshButtonAction" styleClass="refresh-button"/>
                                     <ComboBox fx:id="comboBoxCOM" promptText="Choose a port:"/>
                                     <ComboBox fx:id="comboBoxBR" promptText="Choose a baudrate:"/>
                                 </HBox>

@@ -82,10 +82,9 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
-    private void handleRefreshCOMPorts() {
+    private void handleRefreshButtonAction() {
+        // refresh the available COM ports and add them to the ComboBox
         ports = getAvailableCOMPorts();
-        System.out.println(ports);
-        //setListPortsOnApp(ports);
         comboBoxCOM.setItems(FXCollections.observableArrayList(ports));
     }
 
@@ -155,7 +154,7 @@ public class MainViewController implements Initializable {
         alert.show();
     }
 
-    private ArrayList<String> createRandomCOM() {
+    private ArrayList<String> createRandomCOMs() {
         ArrayList<String> COMs = new ArrayList<>();
 
         int leftLimit = 1, rightLimit = 5, maxNumPorts = 3;
