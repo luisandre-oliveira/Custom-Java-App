@@ -46,7 +46,7 @@
                                 <padding>
                                     <Insets bottom="10" left="10"/>
                                 </padding>
-                                <Label text="UI VERSION: v1.6.0" styleClass="version-text"/>
+                                <Label text="UI VERSION: v1.6" styleClass="version-text"/>
                             </HBox>
                         </VBox>
 
