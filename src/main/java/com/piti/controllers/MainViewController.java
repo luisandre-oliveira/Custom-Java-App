@@ -154,24 +154,26 @@ public class MainViewController implements Initializable {
         alert.show();
     }
 
-    private ArrayList<String> createRandomCOMs() {
-        ArrayList<String> COMs = new ArrayList<>();
-
-        int leftLimit = 1, rightLimit = 5, maxNumPorts = 3;
-        int numPorts = (int) (Math.random() + maxNumPorts);
-
-        Random random = new Random();
-
-        for (int i = 0; i < numPorts; i++) {
-            int intTemp = random.nextInt(rightLimit - leftLimit + 1) + leftLimit;
-            String temp = "COM" + intTemp;
-            if (!COMs.contains(temp)) {
-                COMs.add(temp);
-            }
-        }
-        Collections.sort(COMs);
-        return COMs;
-    }
+// --Commented out (13/04/2023 21:02):
+//    private ArrayList<String> createRandomCOMs() {
+//        ArrayList<String> COMs = new ArrayList<>();
+//
+//        int leftLimit = 1, rightLimit = 5, maxNumPorts = 3;
+//        int numPorts = (int) (Math.random() + maxNumPorts);
+//
+//        Random random = new Random();
+//
+//        for (int i = 0; i < numPorts; i++) {
+//            int intTemp = random.nextInt(rightLimit - leftLimit + 1) + leftLimit;
+//            String temp = "COM" + intTemp;
+//            if (!COMs.contains(temp)) {
+//                COMs.add(temp);
+//            }
+//        }
+//        Collections.sort(COMs);
+//        return COMs;
+//    }
+// --Commented out
 
     private ArrayList<String> getAvailableCOMPorts() {
         SerialPort[] ports = SerialPort.getCommPorts();
